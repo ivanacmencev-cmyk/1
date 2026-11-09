@@ -1,0 +1,31 @@
+#include <stdio.h>  // Для функции printf
+#include <math.h>   // Для функций pow, cos
+
+int main() {
+    // 1. Исходные данные
+    double x = 2.5;
+    double a = 0.4;
+    double b = 1.3;
+    
+    // Переменная для результата
+    double sigma;
+
+    // 2. Вычисление функции
+    // Формула: (a/b)^x * cos^3(x/b)
+    
+    // Считаем первую часть: (a/b) в степени x
+    double part1 = pow(a / b, x);
+    
+    // Считаем вторую часть: косинус в кубе от (x/b)
+    double part2 = pow(cos(x / b), 3);
+
+    // Итоговый результат
+    sigma = part1 * part2;
+
+    // 3. Вывод результата
+    // %lf означает вывод числа типа double
+    printf("Результат вычислений:\n");
+    printf("sigma = %lf\n", sigma);
+
+    return 0;
+}
