@@ -9,6 +9,7 @@ import (
 func main() {
 	// Регистрируем обработчик для корневого маршрута "/"
 	http.HandleFunc("/", homeHandler)
+	http.HandleFunc("/auth", authHandler) // ← +1 строка
 
 	fmt.Println("Сервер запущен: http://localhost:8080")
 
@@ -22,4 +23,9 @@ func main() {
 // Обработчик запросов: принимает writer для ответа и запрос
 func homeHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintln(w, "Привет! Это мой первый веб-сервер на Go.")
+}
+
+// Новый обработчик: возвращает значение заголовка Authorization
+func authHandler(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintln(w, r.Header.Get("Authorization"))
 }
